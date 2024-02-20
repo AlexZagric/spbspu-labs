@@ -1,0 +1,8 @@
+# Built files
+out
+# Emacs temporaries
+\#*\#
+.\#*
+# Various backups
+*.bak
+*~
