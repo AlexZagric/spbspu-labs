@@ -36,6 +36,7 @@ namespace zagrivnyy
     {
       node_t *newNode = new node_t(key, value);
       insertNode(newNode);
+      count_++;
     };
 
     void pop(const std::string &key);
@@ -55,7 +56,36 @@ namespace zagrivnyy
     node_t *head_ = nullptr;
     node_t *tail_ = nullptr;
 
-    void insertNode(node_t *head);
+    void insertNode(node_t *node)
+    {
+      if (head_ == nullptr)
+      {
+        head_ = node;
+        return;
+      }
+
+      node_t *current = head_;
+
+      while (current != nullptr)
+      {
+        if (current->key_ > key)
+        {
+          if (current->next_ != nullptr)
+          {
+            node->next_ = current->next_;
+            current->next_ = node;
+          }
+          else
+          {
+            current->next_ = node;
+          }
+          break;
+        }
+
+        current = current->next_;
+      }
+    };
+
     void deleteNode(node_t *node);
     node_t *searchNode(const std::string &key);
   }
