@@ -9,7 +9,20 @@ namespace zagrivnyy
   {
   public:
     dictionaryList() = default;
-    ~dictionaryList();
+
+    ~dictionaryList()
+    {
+      node_t *current = nullptr;
+      node_t *next = head_;
+
+      while (next != nullptr)
+      {
+        current = next;
+        next = next->next_;
+        delete current;
+      }
+    };
+
     dictionaryList(const dictionaryList &src);
 
     size_t count()
