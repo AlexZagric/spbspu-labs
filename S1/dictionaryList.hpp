@@ -40,7 +40,7 @@ namespace zagrivnyy
     };
 
     void pop(const std::string &key);
-    T get(const std::string &key) const;
+    bool search(const std::string &key) const {return (searchNode(key) != nullptr)};
 
   private:
     struct node_t
@@ -87,7 +87,18 @@ namespace zagrivnyy
     };
 
     void deleteNode(node_t *node);
-    node_t *searchNode(const std::string &key);
+
+    node_t *searchNode(const std::string &key)
+    {
+      node_t *current = head_;
+
+      while (current != nullptr && current->key_ != key)
+      {
+        current = current->next_;
+      }
+
+      return current;
+    };
   }
 }     // namespace zagrivnyy
 #endif
