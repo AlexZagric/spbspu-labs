@@ -6,3 +6,5 @@ out
 # Various backups
 *.bak
 *~
+# VSCode folder
+\.vscode
