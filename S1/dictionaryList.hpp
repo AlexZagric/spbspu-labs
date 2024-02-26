@@ -111,7 +111,26 @@ namespace zagrivnyy
       }
     }
 
-    void deleteNode(node_t *node);
+    void deleteNode(node_t *node)
+    {
+      node_t *current = head_;
+      node_t *previous = nullptr;
+
+      do
+      {
+        if (node == head_)
+        {
+          delete node;
+        }
+        else if (current == node)
+        {
+          previous->next_ = node->next_;
+          delete node;
+        }
+        previous = current;
+        current = current->next_;
+      } while (current != node);
+    }
 
     node_t *findNode(const std::string &key)
     {
