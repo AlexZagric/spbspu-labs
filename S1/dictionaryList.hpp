@@ -113,7 +113,7 @@ namespace zagrivnyy
 
     void deleteNode(node_t *node);
 
-    node_t *findNod(const std::string &key)
+    node_t *findNode(const std::string &key)
     {
       node_t *current = head_;
 
