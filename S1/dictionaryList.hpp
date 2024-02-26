@@ -40,7 +40,11 @@ namespace zagrivnyy
     };
 
     void pop(const std::string &key);
-    bool search(const std::string &key) const {return (searchNode(key) != nullptr)};
+
+    bool search(const std::string &key) const
+    {
+      return (searchNode(key) != nullptr);
+    };
 
   private:
     struct node_t
