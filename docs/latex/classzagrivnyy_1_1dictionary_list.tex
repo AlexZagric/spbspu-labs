@@ -1,0 +1,223 @@
+\doxysection{Шаблон класса zagrivnyy\+::dictionary\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}}
+\hypertarget{classzagrivnyy_1_1dictionary_list}{}\label{classzagrivnyy_1_1dictionary_list}\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+
+
+Односвязный упорядоченный список  
+
+
+
+
+{\ttfamily \#include $<$dictionary\+List.\+hpp$>$}
+
+\doxysubsubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Нода словаря \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classzagrivnyy_1_1dictionary_list_ae6d681a0cee91b85cef315a7194c4106}\label{classzagrivnyy_1_1dictionary_list_ae6d681a0cee91b85cef315a7194c4106} 
+{\bfseries dictionary\+List} (const \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionary\+List}} \&src)=delete
+\item 
+\Hypertarget{classzagrivnyy_1_1dictionary_list_ab7386b55dbd044d5e80eb6c4e53d6a3c}\label{classzagrivnyy_1_1dictionary_list_ab7386b55dbd044d5e80eb6c4e53d6a3c} 
+{\bfseries dictionary\+List} (\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionary\+List}} \&\&src)
+\item 
+size\+\_\+t \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a53fcd3c4fa68d492b9c964f346619c7a}{size}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает размер словаря \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a4a2e4b50ee4711b3ac6d6c9b6167e444}{start}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает первую ноду словаря \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_ada0c16b3b51d7d05f38f6a03cb1574dd}{end}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает последнюю ноду словаря \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a1a2920a915aa0be3ec1801228ac73c2c}{insert}} (const std\+::string \&key, const T \&value)
+\begin{DoxyCompactList}\small\item\em Добавить ключ и значение в словарь \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_ae0732c3cc45aca0692355c085a8533a1}{erase}} (const \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Удалить переданную ноду из словаря \end{DoxyCompactList}\item 
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a49177f8aa334ecf7e79e5342ab47a5cc}\label{classzagrivnyy_1_1dictionary_list_a49177f8aa334ecf7e79e5342ab47a5cc} 
+bool {\bfseries find} (const std\+::string \&key) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1}{insert\+Node}} (\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Вставляет ноду в список \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a8e1649f579e89c1945b0ca0d50ca23c8}{delete\+Node}} (\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Удаляет ноду из словаря \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a515452fdf954d9afb643354510925a57}{find\+Node}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Поиск ноды по ключу \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a9054af335adc7a03ed8e3a5f2f781571}\label{classzagrivnyy_1_1dictionary_list_a9054af335adc7a03ed8e3a5f2f781571} 
+size\+\_\+t {\bfseries count\+\_\+} = 0
+\begin{DoxyCompactList}\small\item\em Количество элементов в словаре \end{DoxyCompactList}\item 
+\Hypertarget{classzagrivnyy_1_1dictionary_list_aaa1a1ad9cf5dfe009b00ec9356f56b8e}\label{classzagrivnyy_1_1dictionary_list_aaa1a1ad9cf5dfe009b00ec9356f56b8e} 
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries head\+\_\+} = nullptr
+\begin{DoxyCompactList}\small\item\em Указатель на первый элемент словаря \end{DoxyCompactList}\item 
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a265860dae8e2245f43a0f3cacaa628aa}\label{classzagrivnyy_1_1dictionary_list_a265860dae8e2245f43a0f3cacaa628aa} 
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries tail\+\_\+} = nullptr
+\begin{DoxyCompactList}\small\item\em Указатель на последний элемент словаря \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+\subsubsection*{template$<$class T$>$\newline
+class zagrivnyy\+::dictionary\+List$<$ T $>$}
+Односвязный упорядоченный список 
+
+Словарь хранит ключ и значение. Ключи не могут повторяться и хранятся строго в лексикографическом порядке. Значения задаются пользовательским типом.
+
+
+\begin{DoxyTemplParams}{Параметры шаблона}
+{\em T} & Тип хранимого значения в словаре \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Методы}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a8e1649f579e89c1945b0ca0d50ca23c8}\label{classzagrivnyy_1_1dictionary_list_a8e1649f579e89c1945b0ca0d50ca23c8} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!deleteNode@{deleteNode}}
+\index{deleteNode@{deleteNode}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{deleteNode()}{deleteNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::delete\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Удаляет ноду из словаря 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em node} & Удаляемая нода \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_ada0c16b3b51d7d05f38f6a03cb1574dd}\label{classzagrivnyy_1_1dictionary_list_ada0c16b3b51d7d05f38f6a03cb1574dd} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!end@{end}}
+\index{end@{end}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает последнюю ноду словаря 
+
+\begin{DoxyReturn}{Возвращает}
+node\+\_\+t\texorpdfstring{$\ast$}{*} Указатель на последний элемент словаря 
+\end{DoxyReturn}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_ae0732c3cc45aca0692355c085a8533a1}\label{classzagrivnyy_1_1dictionary_list_ae0732c3cc45aca0692355c085a8533a1} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!erase@{erase}}
+\index{erase@{erase}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+
+
+
+Удалить переданную ноду из словаря 
+
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & В случае если передан нулевой указатель \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em node} & Указатель на нужную ноду \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a515452fdf954d9afb643354510925a57}\label{classzagrivnyy_1_1dictionary_list_a515452fdf954d9afb643354510925a57} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!findNode@{findNode}}
+\index{findNode@{findNode}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findNode()}{findNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::find\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Поиск ноды по ключу 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em key} & Ключ по которому осуществляется поиск \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+node\+\_\+t\texorpdfstring{$\ast$}{*} Указатель на найденную ноду 
+\end{DoxyReturn}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a1a2920a915aa0be3ec1801228ac73c2c}\label{classzagrivnyy_1_1dictionary_list_a1a2920a915aa0be3ec1801228ac73c2c} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const T \&}]{value }\end{DoxyParamCaption})}
+
+
+
+Добавить ключ и значение в словарь 
+
+Создает новую ноду используя переданные ключ и значение. Вызывает метод \doxylink{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1}{insert\+Node()} для добавления созданной ноды.
+
+\begin{DoxySeeAlso}{См. также}
+\doxylink{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1}{dictionary\+List\+::insert\+Node}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em key} & Ключ словаря, должен быть уникальным значением \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & Значение сопоставляемое ключу \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1}\label{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!insertNode@{insertNode}}
+\index{insertNode@{insertNode}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insertNode()}{insertNode()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::insert\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Вставляет ноду в список 
+
+Добавляет ноду в нужное место учитывая лексикографическй порядок
+
+\begin{DoxyNote}{Заметки}
+Если ключ уже используется, то ничего не произойдет
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em node} & Добавляемая нода \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a53fcd3c4fa68d492b9c964f346619c7a}\label{classzagrivnyy_1_1dictionary_list_a53fcd3c4fa68d492b9c964f346619c7a} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!size@{size}}
+\index{size@{size}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает размер словаря 
+
+\begin{DoxyReturn}{Возвращает}
+size\+\_\+t Количество элементов в словаре 
+\end{DoxyReturn}
+\Hypertarget{classzagrivnyy_1_1dictionary_list_a4a2e4b50ee4711b3ac6d6c9b6167e444}\label{classzagrivnyy_1_1dictionary_list_a4a2e4b50ee4711b3ac6d6c9b6167e444} 
+\index{zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}!start@{start}}
+\index{start@{start}!zagrivnyy::dictionaryList$<$ T $>$@{zagrivnyy::dictionaryList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{zagrivnyy\+::dictionary\+List}}$<$ T $>$\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает первую ноду словаря 
+
+\begin{DoxyReturn}{Возвращает}
+node\+\_\+t\texorpdfstring{$\ast$}{*} Указатель на первый элемент словаря 
+\end{DoxyReturn}
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+S1/\mbox{\hyperlink{dictionary_list_8hpp}{dictionary\+List.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,193 @@
+\doxysection{dictionary\+List.\+hpp}
+\hypertarget{dictionary_list_8hpp_source}{}\label{dictionary_list_8hpp_source}\index{S1/dictionaryList.hpp@{S1/dictionaryList.hpp}}
+\mbox{\hyperlink{dictionary_list_8hpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ DICTIONARY\_LIST\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ DICTIONARY\_LIST\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }zagrivnyy}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList}}}
+\DoxyCodeLine{00027\ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ std::string\ key\_\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ T\ value\_;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *next\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}(std::string\ key,\ T\ value,\ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *next\ =\ \textcolor{keyword}{nullptr}):}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ key\_(key),}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ value\_(value),}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ next\_(next)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{\string~dictionaryList}}();}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList}}\ \&src)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList}}(\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList}}\ \&\&src);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a53fcd3c4fa68d492b9c964f346619c7a}{size}}()}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a9054af335adc7a03ed8e3a5f2f781571}{count\_}};}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a4a2e4b50ee4711b3ac6d6c9b6167e444}{start}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_aaa1a1ad9cf5dfe009b00ec9356f56b8e}{head\_}};}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_ada0c16b3b51d7d05f38f6a03cb1574dd}{end}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a265860dae8e2245f43a0f3cacaa628aa}{tail\_}};}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a1a2920a915aa0be3ec1801228ac73c2c}{insert}}(\textcolor{keyword}{const}\ std::string\ \&key,\ \textcolor{keyword}{const}\ T\ \&value);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_ae0732c3cc45aca0692355c085a8533a1}{erase}}(\textcolor{keyword}{const}\ node\_t\ *node);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Write\ description}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{bool}\ find(\textcolor{keyword}{const}\ std::string\ \&key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a9054af335adc7a03ed8e3a5f2f781571}{count\_}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_aaa1a1ad9cf5dfe009b00ec9356f56b8e}{head\_}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a265860dae8e2245f43a0f3cacaa628aa}{tail\_}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1}{insertNode}}(\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *node);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a8e1649f579e89c1945b0ca0d50ca23c8}{deleteNode}}(\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *node);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a515452fdf954d9afb643354510925a57}{findNode}}(\textcolor{keyword}{const}\ std::string\ \&key);}
+\DoxyCodeLine{00138\ \ \ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00141\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList<\ T\ >::\string~dictionaryList}}()}
+\DoxyCodeLine{00142\ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ node\_t\ *current\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00144\ \ \ \ \ node\_t\ *next\ =\ head\_;}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{while}\ (next\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ current\ =\ next;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ next\ =\ next-\/>next\_;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \textcolor{keyword}{delete}\ current;}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00155\ \ \ \textcolor{keyword}{inline}\ dictionaryList<\ T\ >::dictionaryList(dictionaryList\ \&\&src)}
+\DoxyCodeLine{00156\ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ head\_\ =\ src.\mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_aaa1a1ad9cf5dfe009b00ec9356f56b8e}{head\_}};}
+\DoxyCodeLine{00158\ \ \ \ \ tail\_\ =\ src.tail\_;}
+\DoxyCodeLine{00159\ \ \ \ \ count\_\ =\ src.tail\_;}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ src.tail\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00162\ \ \ \ \ src.head\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00163\ \ \ \ \ src.count\_\ =\ 0;}
+\DoxyCodeLine{00164\ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00167\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a1a2920a915aa0be3ec1801228ac73c2c}{dictionaryList<\ T\ >::insert}}(\textcolor{keyword}{const}\ std::string\ \&key,\ \textcolor{keyword}{const}\ T\ \&value)}
+\DoxyCodeLine{00168\ \ \ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *newNode\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}(key,\ value);}
+\DoxyCodeLine{00170\ \ \ \ \ insertNode(newNode);}
+\DoxyCodeLine{00171\ \ \ \ \ count\_++;}
+\DoxyCodeLine{00172\ \ \ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_ae0732c3cc45aca0692355c085a8533a1}{dictionaryList<\ T\ >::erase}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *node)}
+\DoxyCodeLine{00176\ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00178\ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument();}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ deleteNode(node);}
+\DoxyCodeLine{00183\ \ \ \ \ count\_-\/-\/;}
+\DoxyCodeLine{00184\ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList<\ T\ >::find}}(\textcolor{keyword}{const}\ std::string\ \&key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00188\ \textcolor{keyword}{\ \ }\{}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{return}\ (findNode(key)\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00190\ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00193\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_aa327afb4bfc1830a3ff50ce1c35a1df1}{dictionaryList<\ T\ >::insertNode}}(\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *node)}
+\DoxyCodeLine{00194\ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (head\_\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00196\ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ head\_\ =\ node;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ tail\_\ =\ node;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *current\ =\ head\_;}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00205\ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>key\_\ >\ node-\/>key\_)}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current-\/>next\_\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ node-\/>next\_\ =\ current-\/>next\_;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ current-\/>next\_\ =\ node;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ current-\/>next\_\ =\ node;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ tail\_\ =\ node;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ current\ =\ current-\/>next\_;}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00226\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list_a8e1649f579e89c1945b0ca0d50ca23c8}{dictionaryList<\ T\ >::deleteNode}}(\mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *node)}
+\DoxyCodeLine{00227\ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *current\ =\ head\_;}
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{node\_t}}\ *previous\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{00232\ \ \ \ \ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ head\_)}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ node;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (current\ ==\ node)}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ previous-\/>next\_\ =\ node-\/>next\_;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ node;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ previous\ =\ current;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ current\ =\ current-\/>next\_;}
+\DoxyCodeLine{00244\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (current\ !=\ node);}
+\DoxyCodeLine{00245\ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{class}\ T\ >}
+\DoxyCodeLine{00248\ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{dictionaryList<\ T\ >::node\_t}}\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList<\ T\ >}}::*findNode(\textcolor{keyword}{const}\ std::string\ \&key)}
+\DoxyCodeLine{00249\ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structzagrivnyy_1_1dictionary_list_1_1node__t}{dictionaryList<\ T\ >::node\_t}}\ *current\ =\ \mbox{\hyperlink{classzagrivnyy_1_1dictionary_list}{dictionaryList<\ T\ >::head\_}};}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ current-\/>key\_\ !=\ key)}
+\DoxyCodeLine{00253\ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ current\ =\ current-\/>next\_;}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{return}\ current;}
+\DoxyCodeLine{00258\ \ \ \}}
+\DoxyCodeLine{00259\ \}\ \ \ \ \ \textcolor{comment}{//\ namespace\ zagrivnyy}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
