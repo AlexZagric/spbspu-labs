@@ -1,0 +1,26 @@
+name: Generate Doxygen documentatio
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3.5.2
+
+    - name: Configure docs dir
+      run: mkdir docs
+
+    - name: Generate documentation
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+        working-directory: "."
+
+    - name: Deploy documentation
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: $
+        publish_dir: $/docs
