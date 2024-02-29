@@ -29,7 +29,7 @@ namespace zagrivnyy
     dictionaryList(const dictionaryList &src) = delete;
     dictionaryList(dictionaryList &&src);
 
-    size_t count()
+    size_t size()
     {
       return count_;
     }
