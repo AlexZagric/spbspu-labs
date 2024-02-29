@@ -8,3 +8,5 @@ out
 *~
 # VSCode folder
 \.vscode
+# Docs files
+docs
