@@ -27,6 +27,7 @@ namespace zagrivnyy
     dictionaryList() = default;
     ~dictionaryList();
     dictionaryList(const dictionaryList &src) = delete;
+    dictionaryList(dictionaryList &&src);
 
     size_t count()
     {
@@ -58,7 +59,7 @@ namespace zagrivnyy
   };
 
   template< class T >
-  dictionaryList< T >::~dictionaryList()
+  inline dictionaryList< T >::~dictionaryList()
   {
     node_t *current = nullptr;
     node_t *next = head_;
@@ -69,6 +70,18 @@ namespace zagrivnyy
       next = next->next_;
       delete current;
     }
+  }
+
+  template< class T >
+  inline dictionaryList< T >::dictionaryList(dictionaryList &&src)
+  {
+    head_ = src.head_;
+    tail_ = src.tail_;
+    count_ = src.tail_;
+
+    src.tail_ = nullptr;
+    src.head_ = nullptr;
+    src.count_ = 0;
   }
 
   template< class T >
