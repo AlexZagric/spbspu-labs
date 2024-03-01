@@ -43,6 +43,11 @@ namespace zagrivnyy
         next_(next)
       {
       }
+
+      friend std::ostream &operator<<(std::ostream &os, const node_t &src)
+      {
+        return os << src.key_ << ": " << src.value_;
+      }
     };
 
   public:
@@ -106,6 +111,8 @@ namespace zagrivnyy
     // TODO: Write description
     bool find(const std::string &key) const;
 
+    void print(std::ostream &os) const;
+
   private:
     size_t count_ = 0;           ///< Количество элементов в словаре
     node_t *head_ = nullptr;     ///< Указатель на первый элемент словаря
@@ -143,7 +150,7 @@ namespace zagrivnyy
   {
     for (node_t node : l)
     {
-      node_t *newNode = &node;
+      node_t *newNode = new node_t(node.key_, node.value_);
       insertNode(newNode);
     }
   }
@@ -201,6 +208,20 @@ namespace zagrivnyy
   }
 
   template< class T >
+  inline void dictionaryList< T >::print(std::ostream &os) const
+  {
+    node_t *next = head_;
+    node_t *current = nullptr;
+
+    while (next != nullptr)
+    {
+      current = next;
+      next = next->next_;
+      os << *current << "\n";
+    }
+  }
+
+  template< class T >
   void dictionaryList< T >::insertNode(node_t *node)
   {
     if (head_ == nullptr)
@@ -214,7 +235,7 @@ namespace zagrivnyy
 
     while (current != nullptr)
     {
-      if (current->key_ > node->key_)
+      if (current->key_ < node->key_)
       {
         if (current->next_ != nullptr)
         {
