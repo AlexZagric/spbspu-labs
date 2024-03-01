@@ -47,6 +47,7 @@ namespace zagrivnyy
 
   public:
     dictionaryList() = default;
+    dictionaryList(std::initializer_list< node_t > l);
     ~dictionaryList();
     dictionaryList(const dictionaryList &src) = delete;
     dictionaryList(dictionaryList &&src);
@@ -136,6 +137,16 @@ namespace zagrivnyy
      */
     node_t *findNode(const std::string &key);
   };
+
+  template< class T >
+  inline dictionaryList< T >::dictionaryList(std::initializer_list< node_t > l)
+  {
+    for (node_t node : l)
+    {
+      node_t *newNode = &node;
+      insertNode(newNode);
+    }
+  }
 
   template< class T >
   inline dictionaryList< T >::~dictionaryList()
