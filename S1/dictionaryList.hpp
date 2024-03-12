@@ -235,23 +235,16 @@ namespace zagrivnyy
 
     while (current != nullptr)
     {
-      if (current->key_ < node->key_)
+      if (current->key_ == node->key_)
       {
-        if (current->next_ != nullptr)
-        {
-          node->next_ = current->next_;
-          current->next_ = node;
-        }
-        else
-        {
-          current->next_ = node;
-          tail_ = node;
-        }
-        break;
+        return;
       }
 
       current = current->next_;
     }
+
+    tail_->next_ = node;
+    tail_ = node;
   }
 
   template< class T >
