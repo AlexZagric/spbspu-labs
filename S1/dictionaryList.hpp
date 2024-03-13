@@ -232,19 +232,34 @@ namespace zagrivnyy
     }
 
     node_t *current = head_;
+    node_t *previous = nullptr;
 
-    while (current != nullptr)
+    while (current && current->key_ <= node->key_)
     {
       if (current->key_ == node->key_)
       {
         return;
       }
 
+      previous = current;
       current = current->next_;
     }
 
-    tail_->next_ = node;
-    tail_ = node;
+    if (previous)
+    {
+      node->next_ = previous->next_;
+      previous->next_ = node;
+    }
+    else if (!current)
+    {
+      previous->next_ = node;
+      tail_ = node;
+    }
+    else
+    {
+      node->next_ = head_;
+      head_ = node;
+    }
   }
 
   template< class T >
