@@ -100,6 +100,8 @@ namespace zagrivnyy
      */
     void insert(const std::string &key, const T &value);
 
+    void merge(dictionaryList &src);
+
     /**
      * @brief Удалить переданную ноду из словаря
      *
@@ -187,6 +189,17 @@ namespace zagrivnyy
     node_t *newNode = new node_t(key, value);
     insertNode(newNode);
     count_++;
+  }
+
+  template< class T >
+  void dictionaryList< T >::merge(dictionaryList &src)
+  {
+    node_t *current = src.head_;
+    while (current)
+    {
+      insertNode(current);
+      current = current->next_;
+    }
   }
 
   template< class T >
