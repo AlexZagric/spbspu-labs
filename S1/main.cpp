@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "dictionaryList.hpp"
+#include "DictionaryList.hpp"
 
 int main()
 {
-  zagrivnyy::dictionaryList< int > priceList {
+  zagrivnyy::DictionaryList< int > priceList {
     {    "Apple", 15},
     {"Pineapple", 25},
     {   "Banana", 90},
@@ -12,7 +12,7 @@ int main()
     {"Pineapple", 25},
   };
 
-  zagrivnyy::dictionaryList< int > priceList_new {
+  zagrivnyy::DictionaryList< int > priceList_new {
     {    "Apple", 20},
     {"Pineapple", 60},
     {   "Banana", 88},
