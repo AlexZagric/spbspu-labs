@@ -23,7 +23,7 @@ namespace zagrivnyy
    * @tparam T Тип хранимого значения в словаре
    */
   template< class T >
-  class dictionaryList
+  class DictionaryList
   {
   private:
     /**
@@ -51,11 +51,11 @@ namespace zagrivnyy
     };
 
   public:
-    dictionaryList() = default;
-    dictionaryList(std::initializer_list< node_t > l);
-    ~dictionaryList();
-    dictionaryList(const dictionaryList &src) = delete;
-    dictionaryList(dictionaryList &&src);
+    DictionaryList() = default;
+    DictionaryList(std::initializer_list< node_t > l);
+    ~DictionaryList();
+    DictionaryList(const DictionaryList &src) = delete;
+    DictionaryList(DictionaryList &&src);
 
     /**
      * @brief Возвращает размер словаря
@@ -93,14 +93,14 @@ namespace zagrivnyy
      * Создает новую ноду используя переданные ключ и значение. Вызывает метод insertNode() для добавления созданной
      * ноды.
      *
-     * @see dictionaryList::insertNode
+     * @see DictionaryList::insertNode
      *
      * @param[in] key Ключ словаря, должен быть уникальным значением
      * @param[in] value Значение сопоставляемое ключу
      */
     void insert(const std::string &key, const T &value);
 
-    void merge(dictionaryList &src);
+    void merge(DictionaryList &src);
 
     /**
      * @brief Удалить переданную ноду из словаря
@@ -148,7 +148,7 @@ namespace zagrivnyy
   };
 
   template< class T >
-  inline dictionaryList< T >::dictionaryList(std::initializer_list< node_t > l)
+  inline DictionaryList< T >::DictionaryList(std::initializer_list< node_t > l)
   {
     for (node_t node : l)
     {
@@ -158,7 +158,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  inline dictionaryList< T >::~dictionaryList()
+  inline DictionaryList< T >::~DictionaryList()
   {
     node_t *current = nullptr;
     node_t *next = head_;
@@ -172,7 +172,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  inline dictionaryList< T >::dictionaryList(dictionaryList &&src)
+  inline DictionaryList< T >::DictionaryList(DictionaryList &&src)
   {
     head_ = src.head_;
     tail_ = src.tail_;
@@ -184,7 +184,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  void dictionaryList< T >::insert(const std::string &key, const T &value)
+  void DictionaryList< T >::insert(const std::string &key, const T &value)
   {
     node_t *newNode = new node_t(key, value);
     insertNode(newNode);
@@ -192,7 +192,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  void dictionaryList< T >::merge(dictionaryList &src)
+  void DictionaryList< T >::merge(DictionaryList &src)
   {
     node_t *current = src.head_;
     while (current)
@@ -203,7 +203,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  void dictionaryList< T >::erase(const node_t *node)
+  void DictionaryList< T >::erase(const node_t *node)
   {
     if (node == nullptr)
     {
@@ -215,13 +215,13 @@ namespace zagrivnyy
   }
 
   template< class T >
-  bool dictionaryList< T >::find(const std::string &key) const
+  bool DictionaryList< T >::find(const std::string &key) const
   {
     return (findNode(key) != nullptr);
   }
 
   template< class T >
-  inline void dictionaryList< T >::print(std::ostream &os) const
+  inline void DictionaryList< T >::print(std::ostream &os) const
   {
     node_t *next = head_;
     node_t *current = nullptr;
@@ -235,7 +235,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  void dictionaryList< T >::insertNode(node_t *node)
+  void DictionaryList< T >::insertNode(node_t *node)
   {
     if (head_ == nullptr)
     {
@@ -276,7 +276,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  void dictionaryList< T >::deleteNode(node_t *node)
+  void DictionaryList< T >::deleteNode(node_t *node)
   {
     node_t *current = head_;
     node_t *previous = nullptr;
@@ -298,9 +298,9 @@ namespace zagrivnyy
   }
 
   template< class T >
-  typename dictionaryList< T >::node_t dictionaryList< T >::*findNode(const std::string &key)
+  typename DictionaryList< T >::node_t DictionaryList< T >::*findNode(const std::string &key)
   {
-    typename dictionaryList< T >::node_t *current = dictionaryList< T >::head_;
+    typename DictionaryList< T >::node_t *current = DictionaryList< T >::head_;
 
     while (current != nullptr && current->key_ != key)
     {
