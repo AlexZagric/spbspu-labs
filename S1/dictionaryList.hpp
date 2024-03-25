@@ -111,7 +111,7 @@ namespace zagrivnyy
     void erase(const node_t *node);
 
     // TODO: Write description
-    bool find(const std::string &key) const;
+    node_t *find(const std::string &key);
 
     void print(std::ostream &os) const;
 
@@ -194,12 +194,18 @@ namespace zagrivnyy
   template< class T >
   void DictionaryList< T >::merge(DictionaryList &src)
   {
-    node_t *current = src.head_;
-    while (current)
+    node_t *current = nullptr;
+    node_t *next = src.head_;
+    while (next)
     {
+      current = next;
+      next = next->next_;
+
       insertNode(current);
-      current = current->next_;
     }
+
+    src.head_ = nullptr;
+    src.tail_ = nullptr;
   }
 
   template< class T >
@@ -215,9 +221,10 @@ namespace zagrivnyy
   }
 
   template< class T >
-  bool DictionaryList< T >::find(const std::string &key) const
+  typename DictionaryList< T >::node_t DictionaryList< T >::*find(const std::string &key)
   {
-    return (findNode(key) != nullptr);
+    node_t *node = findNode(key);
+    return node ? node : nullptr;
   }
 
   template< class T >
@@ -258,15 +265,15 @@ namespace zagrivnyy
       current = current->next_;
     }
 
-    if (previous)
-    {
-      node->next_ = previous->next_;
-      previous->next_ = node;
-    }
-    else if (!current)
+    if (current == nullptr)
     {
       previous->next_ = node;
       tail_ = node;
+    }
+    else if (previous)
+    {
+      node->next_ = previous->next_;
+      previous->next_ = node;
     }
     else
     {
