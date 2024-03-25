@@ -48,12 +48,14 @@ IntegerLiteralSeparator:
   Decimal: -1
   Hex: -1
 NamespaceIndentation: All
+PackConstructorInitializers: Never
 QualifierAlignment: Left
 SeparateDefinitionBlocks: Always
 SpaceAfterTemplateKeyword: false
 SpaceBeforeCpp11BracedList: true
 SpaceBeforeCtorInitializerColon: false
 SpaceBeforeInheritanceColon: false
+SpaceInEmptyBlock: true
 SpacesBeforeTrailingComments: 5
 SpacesInAngles: Always
 SpacesInContainerLiterals: false
