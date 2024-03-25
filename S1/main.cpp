@@ -29,5 +29,7 @@ int main()
   std::cout << "--\n";
   priceList.print(std::cout);
   std::cout << "+++++ priceList_new after erase +++++\n";
-  // priceList_new.erase()
+  priceList_new.erase("Apple");
+  priceList_new.erase("Orange");
+  priceList_new.print(std::cout);
 }

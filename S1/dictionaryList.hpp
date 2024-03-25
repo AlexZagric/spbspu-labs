@@ -101,6 +101,7 @@ namespace zagrivnyy
     void insert(const std::string &key, const T &value);
 
     void merge(DictionaryList &src);
+    void deleteWords(DictionaryList &src);
 
     /**
      * @brief Удалить переданную ноду из словаря
@@ -108,10 +109,25 @@ namespace zagrivnyy
      * @throw std::invalid_argument В случае если передан нулевой указатель
      * @param[in] node Указатель на нужную ноду
      */
-    void erase(const node_t *node);
+    void erase(const std::string &key);
 
-    // TODO: Write description
-    node_t *find(const std::string &key);
+    /**
+     * @brief Поиск ноды по ключу
+     *
+     * @param key Ключ по которому осуществляется поиск
+     * @return node_t* Указатель на найденную ноду
+     */
+    node_t *find(const std::string &key)
+    {
+      node_t *current = head_;
+
+      while (current != nullptr && current->key_ != key)
+      {
+        current = current->next_;
+      }
+
+      return current;
+    }
 
     void print(std::ostream &os) const;
 
@@ -137,14 +153,6 @@ namespace zagrivnyy
      * @param[in] node Удаляемая нода
      */
     void deleteNode(node_t *node);
-
-    /**
-     * @brief Поиск ноды по ключу
-     *
-     * @param key Ключ по которому осуществляется поиск
-     * @return node_t* Указатель на найденную ноду
-     */
-    node_t *findNode(const std::string &key);
   };
 
   template< class T >
@@ -209,22 +217,21 @@ namespace zagrivnyy
   }
 
   template< class T >
-  void DictionaryList< T >::erase(const node_t *node)
+  void DictionaryList< T >::deleteWords(DictionaryList &src)
   {
+  }
+
+  template< class T >
+  void DictionaryList< T >::erase(const std::string &key)
+  {
+    node_t *node = find(key);
     if (node == nullptr)
     {
-      throw std::invalid_argument();
+      return;
     }
 
     deleteNode(node);
     count_--;
-  }
-
-  template< class T >
-  typename DictionaryList< T >::node_t DictionaryList< T >::*find(const std::string &key)
-  {
-    node_t *node = findNode(key);
-    return node ? node : nullptr;
   }
 
   template< class T >
@@ -292,6 +299,7 @@ namespace zagrivnyy
     {
       if (node == head_)
       {
+        head_ = node->next_;
         delete node;
       }
       else if (current == node)
@@ -301,20 +309,7 @@ namespace zagrivnyy
       }
       previous = current;
       current = current->next_;
-    } while (current != node);
-  }
-
-  template< class T >
-  typename DictionaryList< T >::node_t DictionaryList< T >::*findNode(const std::string &key)
-  {
-    typename DictionaryList< T >::node_t *current = DictionaryList< T >::head_;
-
-    while (current != nullptr && current->key_ != key)
-    {
-      current = current->next_;
-    }
-
-    return current;
+    } while (node && current);
   }
 }     // namespace zagrivnyy
 #endif
