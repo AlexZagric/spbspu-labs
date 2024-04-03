@@ -219,6 +219,16 @@ namespace zagrivnyy
   template< class T >
   void DictionaryList< T >::deleteWords(DictionaryList &src)
   {
+    node_t *current = nullptr;
+    node_t *next = src.head_;
+
+    while (next)
+    {
+      current = next;
+      next = next->next_;
+
+      erase(current->key_);
+    }
   }
 
   template< class T >
