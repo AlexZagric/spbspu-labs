@@ -32,8 +32,8 @@ int main()
   priceList.print(std::cout);
   std::cout << "+++++++++++ priceList_new +++++++++++\n";
   priceList_new.print(std::cout);
-  priceList_new.merge(priceList);
   std::cout << "++++++ priceLists after merge ++++++\n";
+  priceList_new.merge(priceList);
   priceList_new.print(std::cout);
   std::cout << "--\n";
   priceList.print(std::cout);
@@ -44,4 +44,7 @@ int main()
   std::cout << "++ priceList_new after deleteWords ++\n";
   priceList_new.deleteWords(positionsToDelete);
   priceList_new.print(std::cout);
+
+  // zagrivnyy::DictionaryList< int > intersectionList;
+  // intersectionList = zagrivnyy::getIntersection< int >(priceList, priceList_new);
 }

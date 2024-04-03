@@ -62,7 +62,7 @@ namespace zagrivnyy
      *
      * @return size_t Количество элементов в словаре
      */
-    size_t size()
+    size_t size() const
     {
       return count_;
     }
@@ -102,6 +102,8 @@ namespace zagrivnyy
 
     void merge(DictionaryList &src);
     void deleteWords(DictionaryList &src);
+    // template< class U >
+    // friend DictionaryList< U > getIntersection(const DictionaryList< U > &first, const DictionaryList< U > &second);
 
     /**
      * @brief Удалить переданную ноду из словаря
@@ -117,7 +119,7 @@ namespace zagrivnyy
      * @param key Ключ по которому осуществляется поиск
      * @return node_t* Указатель на найденную ноду
      */
-    node_t *find(const std::string &key)
+    node_t *find(const std::string &key) const
     {
       node_t *current = head_;
 
@@ -130,6 +132,9 @@ namespace zagrivnyy
     }
 
     void print(std::ostream &os) const;
+
+    DictionaryList &operator=(DictionaryList &&src);
+    DictionaryList &operator=(const DictionaryList &src) = delete;
 
   private:
     size_t count_ = 0;           ///< Количество элементов в словаре
@@ -184,7 +189,7 @@ namespace zagrivnyy
   {
     head_ = src.head_;
     tail_ = src.tail_;
-    count_ = src.tail_;
+    count_ = src.count_;
 
     src.tail_ = nullptr;
     src.head_ = nullptr;
@@ -196,7 +201,6 @@ namespace zagrivnyy
   {
     node_t *newNode = new node_t(key, value);
     insertNode(newNode);
-    count_++;
   }
 
   template< class T >
@@ -231,6 +235,30 @@ namespace zagrivnyy
     }
   }
 
+  // template< class T >
+  // DictionaryList< T > getIntersection(const DictionaryList< T > &first, const DictionaryList< T > &second)
+  // {
+  //   const DictionaryList< T > &biggestDict = first.size() > second.size() ? first : second;
+  //   const DictionaryList< T > &smallestDict = first.size() < second.size() ? first : second;
+  //   DictionaryList< T > newDict;
+
+  //   typename DictionaryList< T >::node_t *current = nullptr;
+  //   typename DictionaryList< T >::node_t *next = biggestDict.head_;
+
+  //   while (next)
+  //   {
+  //     current = next;
+  //     next = next->next_;
+
+  //     if (smallestDict.find(current->key_))
+  //     {
+  //       newDict.insert(current->key_, current->value_);
+  //     }
+  //   }
+
+  //   return newDict;
+  // }
+
   template< class T >
   void DictionaryList< T >::erase(const std::string &key)
   {
@@ -241,7 +269,6 @@ namespace zagrivnyy
     }
 
     deleteNode(node);
-    count_--;
   }
 
   template< class T >
@@ -259,12 +286,26 @@ namespace zagrivnyy
   }
 
   template< class T >
+  DictionaryList< T > &DictionaryList< T >::operator=(DictionaryList &&src)
+  {
+    head_ = src.head_;
+    tail_ = src.tail_;
+    count_ = src.count_;
+
+    src.tail_ = nullptr;
+    src.head_ = nullptr;
+    src.count_ = 0;
+    return *this;
+  }
+
+  template< class T >
   void DictionaryList< T >::insertNode(node_t *node)
   {
     if (head_ == nullptr)
     {
       head_ = node;
       tail_ = node;
+      ++count_;
       return;
     }
 
@@ -286,16 +327,19 @@ namespace zagrivnyy
     {
       previous->next_ = node;
       tail_ = node;
+      ++count_;
     }
     else if (previous)
     {
       node->next_ = previous->next_;
       previous->next_ = node;
+      ++count_;
     }
     else
     {
       node->next_ = head_;
       head_ = node;
+      ++count_;
     }
   }
 
@@ -311,11 +355,13 @@ namespace zagrivnyy
       {
         head_ = node->next_;
         delete node;
+        --count_;
       }
       else if (current == node)
       {
         previous->next_ = node->next_;
         delete node;
+        --count_;
       }
       previous = current;
       current = current->next_;
