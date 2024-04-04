@@ -100,10 +100,23 @@ namespace zagrivnyy
      */
     void insert(const std::string &key, const T &value);
 
+    /**
+     * @brief Объединение переданного словаря с исходным
+     *
+     * @param src Словарь для объединения
+     */
     void merge(DictionaryList &src);
+
+    /**
+     * @brief Удаление слов которые присутствуют в переданном словаре
+     *
+     * @param src Словарь слов для удаления
+     */
     void deleteWords(DictionaryList &src);
-    // template< class U >
-    // friend DictionaryList< U > getIntersection(const DictionaryList< U > &first, const DictionaryList< U > &second);
+
+    typedef node_t Node;     // Необходимо для работы friend функции
+    template< T >
+    friend DictionaryList< T > getIntersection(const DictionaryList< T > &first, const DictionaryList< T > &second);
 
     /**
      * @brief Удалить переданную ноду из словаря
@@ -123,7 +136,7 @@ namespace zagrivnyy
     {
       node_t *current = head_;
 
-      while (current != nullptr && current->key_ != key)
+      while (current && current->key_ != key)
       {
         current = current->next_;
       }
@@ -131,10 +144,15 @@ namespace zagrivnyy
       return current;
     }
 
+    /**
+     * @brief Вывод слов из словаря в переданный поток вывода
+     *
+     * @param os Поток вывода
+     */
     void print(std::ostream &os) const;
 
-    DictionaryList &operator=(DictionaryList &&src);
     DictionaryList &operator=(const DictionaryList &src) = delete;
+    DictionaryList &operator=(DictionaryList &&src);
 
   private:
     size_t count_ = 0;           ///< Количество элементов в словаре
@@ -176,7 +194,7 @@ namespace zagrivnyy
     node_t *current = nullptr;
     node_t *next = head_;
 
-    while (next != nullptr)
+    while (next)
     {
       current = next;
       next = next->next_;
@@ -235,29 +253,27 @@ namespace zagrivnyy
     }
   }
 
-  // template< class T >
-  // DictionaryList< T > getIntersection(const DictionaryList< T > &first, const DictionaryList< T > &second)
-  // {
-  //   const DictionaryList< T > &biggestDict = first.size() > second.size() ? first : second;
-  //   const DictionaryList< T > &smallestDict = first.size() < second.size() ? first : second;
-  //   DictionaryList< T > newDict;
+  template< class T >
+  DictionaryList< T > getIntersection(const DictionaryList< T > &first, const DictionaryList< T > &second)
+  {
+    DictionaryList< T > newDict;
 
-  //   typename DictionaryList< T >::node_t *current = nullptr;
-  //   typename DictionaryList< T >::node_t *next = biggestDict.head_;
+    typename DictionaryList< T >::Node *current = nullptr;
+    typename DictionaryList< T >::Node *next = first.start();
 
-  //   while (next)
-  //   {
-  //     current = next;
-  //     next = next->next_;
+    while (next)
+    {
+      current = next;
+      next = next->next_;
 
-  //     if (smallestDict.find(current->key_))
-  //     {
-  //       newDict.insert(current->key_, current->value_);
-  //     }
-  //   }
+      if (second.find(current->key_))
+      {
+        newDict.insert(current->key_, current->value_);
+      }
+    }
 
-  //   return newDict;
-  // }
+    return newDict;
+  }
 
   template< class T >
   void DictionaryList< T >::erase(const std::string &key)
@@ -277,7 +293,7 @@ namespace zagrivnyy
     node_t *next = head_;
     node_t *current = nullptr;
 
-    while (next != nullptr)
+    while (next)
     {
       current = next;
       next = next->next_;
@@ -349,7 +365,7 @@ namespace zagrivnyy
     node_t *current = head_;
     node_t *previous = nullptr;
 
-    do
+    while (node && current)
     {
       if (node == head_)
       {
@@ -365,7 +381,7 @@ namespace zagrivnyy
       }
       previous = current;
       current = current->next_;
-    } while (node && current);
+    }
   }
-}     // namespace zagrivnyy
+}
 #endif
