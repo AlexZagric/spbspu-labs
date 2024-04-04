@@ -32,6 +32,7 @@ BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 ConstructorInitializerIndentWidth: 2
 ContinuationIndentWidth: 2
+FixNamespaceComments: false
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: <[A-Za-z0-9]+>
@@ -48,12 +49,14 @@ IntegerLiteralSeparator:
   Decimal: -1
   Hex: -1
 NamespaceIndentation: All
+PackConstructorInitializers: Never
 QualifierAlignment: Left
 SeparateDefinitionBlocks: Always
 SpaceAfterTemplateKeyword: false
-SpaceBeforeCpp11BracedList: true
+SpaceBeforeCpp11BracedList: false
 SpaceBeforeCtorInitializerColon: false
 SpaceBeforeInheritanceColon: false
+SpaceInEmptyBlock: true
 SpacesBeforeTrailingComments: 5
 SpacesInAngles: Always
 SpacesInContainerLiterals: false

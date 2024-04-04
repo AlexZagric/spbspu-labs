@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
     - uses: actions/checkout@v3.5.2
@@ -22,5 +23,5 @@ jobs:
     - name: Deploy documentation
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: $
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: $/docs
