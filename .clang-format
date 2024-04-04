@@ -32,6 +32,7 @@ BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 ConstructorInitializerIndentWidth: 2
 ContinuationIndentWidth: 2
+FixNamespaceComments: false
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: <[A-Za-z0-9]+>
@@ -52,7 +53,7 @@ PackConstructorInitializers: Never
 QualifierAlignment: Left
 SeparateDefinitionBlocks: Always
 SpaceAfterTemplateKeyword: false
-SpaceBeforeCpp11BracedList: true
+SpaceBeforeCpp11BracedList: false
 SpaceBeforeCtorInitializerColon: false
 SpaceBeforeInheritanceColon: false
 SpaceInEmptyBlock: true
