@@ -3,6 +3,7 @@ name: Generate Doxygen documentation
 on:
   pull_request:
     branches: [ main ]
+    types: [ closed ]
 
 jobs:
   build:
