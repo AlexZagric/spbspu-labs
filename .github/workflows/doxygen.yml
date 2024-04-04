@@ -19,13 +19,13 @@ jobs:
     - name: Generate documentation
       uses: mattnotmitt/doxygen-action@v1
       with:
-        working-directory: "."
+        working-directory: .
 
     - name: Deploy documentation
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/html
+        publish_dir: $/docs/html
         enable_jekyll: false
         allow_empty_commit: false
         force_orphan: true
