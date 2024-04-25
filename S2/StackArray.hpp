@@ -1,7 +1,9 @@
 #ifndef STACKARRAY_HPP
 #define STACKARRAY_HPP
-#include "Stack.hpp"
-#include "StackOverflow.hpp"
+#include "stack.hpp"
+#include "stackOverflow.hpp"
+#include "stackUnderflow.hpp"
+#include "wrongStackSize.hpp"
 
 namespace zagrivnyy
 {
@@ -15,6 +17,7 @@ namespace zagrivnyy
     void push(const T &e) override;
     T pop() override;
     bool isEmpty() override;
+    int size();
 
   private:
     T *array_ = nullptr;
@@ -31,7 +34,7 @@ namespace zagrivnyy
     }
     catch (...)
     {
-      throw T;
+      throw WrongStackSize();
     }
     top_ = 0;
   }
@@ -58,7 +61,7 @@ namespace zagrivnyy
   {
     if (top_ == 0)
     {
-      throw T;
+      throw StackUnderflow();
     }
 
     return array_[top_--];
@@ -69,5 +72,12 @@ namespace zagrivnyy
   {
     return top_ == 0;
   }
+
+  template< class T >
+  int size()
+  {
+    return top_;
+  }
 }
+
 #endif
