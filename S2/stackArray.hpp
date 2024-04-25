@@ -1,9 +1,7 @@
 #ifndef STACKARRAY_HPP
 #define STACKARRAY_HPP
 #include "stack.hpp"
-#include "stackOverflow.hpp"
-#include "stackUnderflow.hpp"
-#include "wrongStackSize.hpp"
+#include "stackExceptions.hpp"
 
 namespace zagrivnyy
 {
@@ -59,7 +57,7 @@ namespace zagrivnyy
   template< class T >
   T StackArray< T >::pop()
   {
-    if (top_ == 0)
+    if (isEmpty())
     {
       throw StackUnderflow();
     }
