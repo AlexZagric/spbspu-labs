@@ -3,12 +3,43 @@
 #include <limits>
 #include <string>
 
+#include "queueCirc.hpp"
 #include "stackArray.hpp"
 
 bool checkBalanceBrackets(const std::string &text, const int maxDeep);
 
 int main()
 {
+  try
+  {
+    zagrivnyy::StackArray< char > wrongSize{-1};
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
+  zagrivnyy::StackArray< int > stack{3};
+  try
+  {
+    stack.pop();
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+  try
+  {
+    stack.push(1);
+    stack.push(1);
+    stack.push(1);
+    stack.push(1);
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
   std::string input = "";
   int maxDeep = 0;
 
@@ -34,12 +65,45 @@ int main()
     }
   }
 
+  try
+  {
+    zagrivnyy::QueueCirc< int > wrongSize{-1};
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
+  zagrivnyy::QueueCirc< int > queue{4};
+
+  try
+  {
+    queue.deQueue();
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
+  try
+  {
+    queue.enQueue(4);
+    queue.enQueue(2);
+    queue.enQueue(8);
+    queue.enQueue(7);
+    queue.enQueue(1);
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
   return 0;
 }
 
 bool checkBalanceBrackets(const std::string &text, const int maxDeep)
 {
-  zagrivnyy::StackArray< char > stack;
+  zagrivnyy::StackArray< char > stack{maxDeep};
   for (const char c : text)
   {
     if (stack.size() > maxDeep)
