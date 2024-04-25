@@ -1,5 +1,6 @@
 #ifndef QUEUECIRC_HPP
 #define QUEUECIRC_HPP
+#include "queue.hpp"
 #include "queueExceptions.hpp"
 
 namespace zagrivnyy
@@ -25,7 +26,14 @@ namespace zagrivnyy
   template< class T >
   QueueCirc< T >::QueueCirc(const int size)
   {
-    array_ = new T[size_ = size];
+    try
+    {
+      array_ = new T[size_ = size];
+    }
+    catch (...)
+    {
+      throw WrongQueueSize();
+    }
 
     front_ = -1;
     rear_ = -1;
@@ -47,9 +55,9 @@ namespace zagrivnyy
 
     if (front_ == -1)
     {
-      front = 0;
+      front_ = 0;
     }
-    rear = (rear + 1) % size_;
+    rear_ = (rear_ + 1) % size_;
     array_[rear_] = e;
   }
 
