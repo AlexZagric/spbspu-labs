@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <string>
 
 #include "stackArray.hpp"
@@ -10,10 +11,28 @@ int main()
 {
   std::string input = "";
   int maxDeep = 0;
-  std::cout << "Enter max deep of brackets & text to check: ";
-  std::cin >> maxDeep >> input;
 
-  std::cout << std::boolalpha << checkBalanceBrackets(input, maxDeep) << '\n';
+  while (!std::cin.eof())
+  {
+    std::cout << "Enter max deep of brackets & text to check: ";
+    std::cin >> maxDeep >> input;
+
+    if (std::cin.fail())
+    {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
+      continue;
+    }
+
+    try
+    {
+      std::cout << std::boolalpha << checkBalanceBrackets(input, maxDeep) << '\n';
+    }
+    catch (const std::exception &e)
+    {
+      std::cerr << e.what() << '\n';
+    }
+  }
 
   return 0;
 }
