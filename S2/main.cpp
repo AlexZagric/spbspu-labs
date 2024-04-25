@@ -91,12 +91,19 @@ int main()
     queue.enQueue(2);
     queue.enQueue(8);
     queue.enQueue(7);
-    queue.enQueue(1);
+    queue.enQueue(100);
   }
   catch (const std::exception &e)
   {
     std::cerr << e.what() << '\n';
   }
+
+  std::cout << queue << "===\n";
+  queue.deQueue();
+  queue.deQueue();
+  std::cout << queue << "===\n";
+  queue.enQueue(99);
+  std::cout << queue << "===\n";
 
   return 0;
 }

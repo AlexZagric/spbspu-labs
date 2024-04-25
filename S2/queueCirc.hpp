@@ -1,5 +1,7 @@
 #ifndef QUEUECIRC_HPP
 #define QUEUECIRC_HPP
+#include <iostream>
+
 #include "queue.hpp"
 #include "queueExceptions.hpp"
 
@@ -15,6 +17,18 @@ namespace zagrivnyy
     void enQueue(const T &e) override;
     T deQueue() override;
     bool isEmpty() override;
+
+    friend std::ostream &operator<<(std::ostream &out, const QueueCirc &src)
+    {
+      int i = 0;
+      for (i = src.front_; i != src.rear_; i = (i + 1) % src.size_)
+      {
+        out << i << " " << src.array_[i] << '\n';
+      }
+      out << i << " " << src.array_[i] << '\n';
+
+      return out;
+    };
 
   private:
     T *array_ = nullptr;
