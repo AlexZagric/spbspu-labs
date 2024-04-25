@@ -74,7 +74,7 @@ namespace zagrivnyy
   }
 
   template< class T >
-  int size()
+  int StackArray< T >::size()
   {
     return top_;
   }

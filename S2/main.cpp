@@ -13,7 +13,7 @@ int main()
   std::cout << "Enter max deep of brackets & text to check: ";
   std::cin >> maxDeep >> input;
 
-  std::cout << std::boolalpha << checkBalanceBrackets(input, maxDeep);
+  std::cout << std::boolalpha << checkBalanceBrackets(input, maxDeep) << '\n';
 
   return 0;
 }
@@ -23,7 +23,7 @@ bool checkBalanceBrackets(const std::string &text, const int maxDeep)
   zagrivnyy::StackArray< char > stack;
   for (const char c : text)
   {
-    if (stack.size() == maxDeep)
+    if (stack.size() > maxDeep)
     {
       return false;
     }
@@ -49,7 +49,6 @@ bool checkBalanceBrackets(const std::string &text, const int maxDeep)
       }
       break;
     }
-
-    return stack.isEmpty();
   }
+  return stack.isEmpty();
 }
