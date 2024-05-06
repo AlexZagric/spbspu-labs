@@ -31,23 +31,32 @@ namespace zagrivnyy
     BinarySearchTree &operator=(const BinarySearchTree &) = delete;
     BinarySearchTree &operator=(BinarySearchTree &&src) noexcept;
 
-    bool searchKeyInteractive(const T &key) const;
-    bool insertNode(const T &key);
-    bool deleteNode(const T &key);
+    bool searchKey(const T &key) const;
+    bool insertKey(const T &key);
+    bool deleteKey(const T &key);
+
     void output(std::ostream &out) const;
-    int getNumberOfNodes() const;
-    int getHeight() const;
+
+    int size() const;
+    int height() const;
+
     void inorderWalkIterative() const;
     void inorderWalk() const;
     void walkByLevels() const;
+
     bool isSimilar(const BinarySearchTree &other) const;
     bool isIdentical(const BinarySearchTree &other) const;
 
   private:
+    node_t *root_;
+
     node_t *searchNodeIterative(const T &key) const;
+
     void output(std::ostream &out, node_t *root) const;
-    void getNumberOfNodes(const node_t *node) const;
+
+    int getSize(const node_t *node) const;
     int getHeight(const node_t *node) const;
+
     void inorderWalk(node_t *node) const;
   };
 }
