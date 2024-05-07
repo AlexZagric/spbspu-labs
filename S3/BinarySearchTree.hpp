@@ -50,7 +50,7 @@ namespace zagrivnyy
   private:
     node_t *root_;
 
-    node_t *searchNodeIterative(const T &key) const;
+    node_t *findNode(const T &key) const;
 
     void output(std::ostream &out, node_t *root) const;
 
@@ -59,5 +59,67 @@ namespace zagrivnyy
 
     void inorderWalk(node_t *node) const;
   };
+
+  template< class T >
+  BinarySearchTree< T >::BinarySearchTree()
+  {
+    root_ = nullptr;
+  }
+
+  template< class T >
+  BinarySearchTree< T >::BinarySearchTree(BinarySearchTree &&src) noexcept
+  {
+    root_ = std::move(src.root_);
+  }
+
+  template< class T >
+  BinarySearchTree< T >::~BinarySearchTree()
+  {
+    // TODO: make destructor
+  }
+
+  template< class T >
+  BinarySearchTree< T > &BinarySearchTree< T >::operator=(BinarySearchTree &&src) noexcept
+  {
+    root_ = std::move(src.root_);
+    return *this;
+  }
+
+  template< class T >
+  bool BinarySearchTree< T >::searchKey(const T &key) const
+  {
+    node_t *current = root_;
+
+    while (current)
+    {
+      if (key < current->key_)
+      {
+        current = current->left_;
+      }
+      else if (key > current->key_)
+      {
+        current = current->right_;
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    return current != nullptr;
+  }
+
+  template< class T >
+  bool BinarySearchTree< T >::insertKey(const T &key)
+  {
+    node_t *curent = findNode(key);
+
+    if (curent)
+    {
+      return false;
+    }
+
+    // TODO: Complete insert keys
+  }
 }
 #endif
