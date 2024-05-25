@@ -112,14 +112,39 @@ namespace zagrivnyy
   template< class T >
   bool BinarySearchTree< T >::insertKey(const T &key)
   {
-    node_t *curent = findNode(key);
-
-    if (curent)
+    if (!root_)
     {
-      return false;
+      root_ = new node_t(key);
+      return true;
     }
 
-    // TODO: Complete insert keys
+    node_t *current = root_;
+    while (current)
+    {
+      if (current->key_ < key)
+      {
+        if (!(current->right_))
+        {
+          current->right_ = new node_t(key);
+          return true;
+        }
+        current = current->right_;
+      }
+      else if (current->key_ > key)
+      {
+        if (!(current->left_))
+        {
+          current->left_ = new node_t(key);
+          return true;
+        }
+        current = current->left_;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    return false;
   }
 }
 #endif
