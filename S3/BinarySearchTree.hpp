@@ -1,6 +1,7 @@
 #ifndef BINARYSEARCHTREE_HPP
 #define BINARYSEARCHTREE_HPP
 #include <iostream>
+#include <string>
 
 namespace zagrivnyy
 {
@@ -72,7 +73,8 @@ namespace zagrivnyy
       return current;
     };
 
-    void output(std::ostream &out, node_t *root) const;
+    void output(std::ostream &out, node_t *node, const std::string &prefix_r = "", const std::string &prefix_c = "",
+      const std::string &prefix_l = "") const;
 
     int getSize(const node_t *node) const;
     int getHeight(const node_t *node) const;
@@ -190,6 +192,34 @@ namespace zagrivnyy
     }
 
     return true;
+  }
+
+  template< class T >
+  void BinarySearchTree< T >::output(std::ostream &out) const
+  {
+    return output(out, root_);
+  }
+
+  template< class T >
+  void BinarySearchTree< T >::output(std::ostream &out, node_t *node, const std::string &prefix_r,
+    const std::string &prefix_c, const std::string &prefix_l) const
+  {
+    if (!node)
+    {
+      return;
+    }
+
+    if (node->right_)
+    {
+      output(out, node->right_, prefix_r + "   ", prefix_r + "|--", prefix_r + "|  ");
+    }
+
+    out << prefix_c << std::to_string(node->key_) << '\n';
+
+    if (node->left_)
+    {
+      output(out, node->left_, prefix_l + "|  ", prefix_l + "|--", prefix_l + "   ");
+    }
   }
 }
 #endif

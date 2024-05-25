@@ -16,6 +16,8 @@ int main()
   std::cout << tree->insertKey(16) << '\n';
   std::cout << tree->insertKey(6) << '\n';
   std::cout << tree->searchKey(5) << '\n';
+  tree->output(std::cout);
   std::cout << tree->deleteKey(5) << '\n';
   std::cout << tree->searchKey(5) << '\n';
+  tree->output(std::cout);
 }
