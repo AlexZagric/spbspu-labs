@@ -21,6 +21,15 @@ namespace zagrivnyy
         right_(right)
       {
       }
+
+      node_t &operator=(node_t &&src) noexcept
+      {
+        this->key_ = std::move(src.key_);
+        this->left_ = std::move(src.left_);
+        this->right_ = std::move(src.right_);
+
+        return *this;
+      }
     };
 
   public:
@@ -161,10 +170,16 @@ namespace zagrivnyy
       return false;
     }
 
+    if (!(node->right_) && !(node->left_))
+    {
+      delete node;
+      root_ = nullptr;
+      return true;
+    }
+
     if (!(node->right_))
     {
-      node = std::move(node->left_);
-      delete node->left_;
+      *node = std::move(*node->left_);
     }
     else
     {
@@ -172,21 +187,28 @@ namespace zagrivnyy
       if (!(child->left_))
       {
         child->left_ = node->left_;
-        node = std::move(child);
-        delete child;
+        *node = std::move(*child);
       }
       else
       {
         node_t *min = child->left_;
+        node_t *prev = child;
         while (min->left_)
         {
+          prev = min;
           min = min->left_;
         }
+
         node->key_ = min->key_;
+
         if (min->right_)
         {
-          min = std::move(min->right_);
-          delete min->right_;
+          *min = std::move(*min->right_);
+        }
+        else
+        {
+          prev->left_ = nullptr;
+          delete min;
         }
       }
     }
