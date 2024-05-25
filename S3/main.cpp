@@ -22,4 +22,15 @@ int main()
     std::cout << '\n';
     tree->output(std::cout);
   }
+
+  zagrivnyy::BinarySearchTree< char > *tree2 = new zagrivnyy::BinarySearchTree< char >();
+  tree2->insertKey('f');
+  tree2->insertKey('e');
+  tree2->insertKey('a');
+  tree2->insertKey('c');
+  tree2->insertKey('d');
+  tree2->insertKey('g');
+  tree2->insertKey('b');
+  tree2->output(std::cout);
+  std::cout << tree2->size() << " " << tree2->height() << "\n\n";
 }

@@ -229,6 +229,12 @@ namespace zagrivnyy
   }
 
   template< class T >
+  inline int BinarySearchTree< T >::height() const
+  {
+    return getHeight(this->root_);
+  }
+
+  template< class T >
   void BinarySearchTree< T >::output(std::ostream &out, node_t *node, const std::string &prefix_r,
     const std::string &prefix_c, const std::string &prefix_l) const
   {
@@ -242,7 +248,7 @@ namespace zagrivnyy
       output(out, node->right_, prefix_r + "   ", prefix_r + "|--", prefix_r + "|  ");
     }
 
-    out << prefix_c << std::to_string(node->key_) << '\n';
+    out << prefix_c << node->key_ << '\n';
 
     if (node->left_)
     {
@@ -259,6 +265,17 @@ namespace zagrivnyy
     }
 
     return (1 + getSize(node->left_) + getSize(node->right_));
+  }
+
+  template< class T >
+  inline int BinarySearchTree< T >::getHeight(const node_t *node) const
+  {
+    if (!node)
+    {
+      return 0;
+    }
+
+    return (1 + std::max(getHeight(node->left_), getHeight(node->right_)));
   }
 }
 #endif
