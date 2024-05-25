@@ -50,7 +50,27 @@ namespace zagrivnyy
   private:
     node_t *root_;
 
-    node_t *findNode(const T &key) const;
+    node_t *findNode(const T &key) const
+    {
+      node_t *current = root_;
+
+      while (current)
+      {
+        if (key < current->key_)
+        {
+          current = current->left_;
+        }
+        else if (key > current->key_)
+        {
+          current = current->right_;
+        }
+        else
+        {
+          break;
+        }
+      }
+      return current;
+    };
 
     void output(std::ostream &out, node_t *root) const;
 
@@ -88,25 +108,7 @@ namespace zagrivnyy
   template< class T >
   bool BinarySearchTree< T >::searchKey(const T &key) const
   {
-    node_t *current = root_;
-
-    while (current)
-    {
-      if (key < current->key_)
-      {
-        current = current->left_;
-      }
-      else if (key > current->key_)
-      {
-        current = current->right_;
-      }
-      else
-      {
-        break;
-      }
-    }
-
-    return current != nullptr;
+    return findNode(key) != nullptr;
   }
 
   template< class T >
@@ -145,6 +147,49 @@ namespace zagrivnyy
       }
     }
     return false;
+  }
+
+  template< class T >
+  bool BinarySearchTree< T >::deleteKey(const T &key)
+  {
+    node_t *node = findNode(key);
+
+    if (!node)
+    {
+      return false;
+    }
+
+    if (!(node->right_))
+    {
+      node = std::move(node->left_);
+      delete node->left_;
+    }
+    else
+    {
+      node_t *child = node->right_;
+      if (!(child->left_))
+      {
+        child->left_ = node->left_;
+        node = std::move(child);
+        delete child;
+      }
+      else
+      {
+        node_t *min = child->left_;
+        while (min->left_)
+        {
+          min = min->left_;
+        }
+        node->key_ = min->key_;
+        if (min->right_)
+        {
+          min = std::move(min->right_);
+          delete min->right_;
+        }
+      }
+    }
+
+    return true;
   }
 }
 #endif
