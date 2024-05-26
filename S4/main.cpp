@@ -3,6 +3,7 @@
 
 void makeHeap(int *arr, int i, int n);
 void heapSort(int *arr, int n);
+bool isSorted(int *arr, int size);
 
 int main()
 {
@@ -12,17 +13,10 @@ int main()
   {
     // arr[i] = std::rand();
     arr[i] = i * 10;
-    std::cout << arr[i] << " ";
   }
-  std::cout << '\n';
-
+  std::cout << isSorted(arr, 10) << '\n';
   heapSort(arr, 10);
-
-  for (int i = 0; i < 10; i++)
-  {
-    std::cout << arr[i] << " ";
-  }
-  std::cout << '\n';
+  std::cout << isSorted(arr, 10) << '\n';
 }
 
 void makeHeap(int *arr, int i, int n)
@@ -66,4 +60,16 @@ void heapSort(int *arr, int n)
     std::swap(arr[0], arr[i]);
     makeHeap(arr, 0, i);
   }
+}
+
+bool isSorted(int *arr, int size)
+{
+  for (int i = 0; i < size - 1; i++)
+  {
+    if (arr[i] < arr[i + 1])
+    {
+      return false;
+    }
+  }
+  return true;
 }
