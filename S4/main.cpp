@@ -2,8 +2,8 @@
 #include <iomanip>
 #include <iostream>
 
-void makeHeap(int *arr, int i, int n);
-void heapSort(int *arr, int n);
+void makeHeap(int *arr, int i, int n, size_t &switches);
+void heapSort(int *arr, int n, size_t &switches);
 bool isSorted(int *arr, int size);
 void testSort(int size);
 
@@ -15,7 +15,7 @@ int main()
   testSort(500000);
 }
 
-void makeHeap(int *arr, int i, int n)
+void makeHeap(int *arr, int i, int n, size_t &switches)
 {
   int min = i;
   while (1)
@@ -38,23 +38,25 @@ void makeHeap(int *arr, int i, int n)
     else
     {
       std::swap(arr[min], arr[i]);
+      switches++;
       i = min;
     }
   }
 }
 
-void heapSort(int *arr, int n)
+void heapSort(int *arr, int n, size_t &switches)
 {
   int i = 0;
   for (i = n / 2; i >= 0; i--)
   {
-    makeHeap(arr, i, n);
+    makeHeap(arr, i, n, switches);
   }
 
   for (int i = n - 1; i >= 0; i--)
   {
     std::swap(arr[0], arr[i]);
-    makeHeap(arr, 0, i);
+    switches++;
+    makeHeap(arr, 0, i, switches);
   }
 }
 
@@ -72,6 +74,7 @@ bool isSorted(int *arr, int size)
 
 void testSort(int size)
 {
+  size_t switches = 0;
   std::cout << "== Starting test for " << size << " elements ==\n";
   int *arr = new int[size];
   std::cout << "Running tests for the best situation:\n";
@@ -79,22 +82,27 @@ void testSort(int size)
   {
     arr[i] = i;
   }
-  heapSort(arr, size);
+  heapSort(arr, size, switches);
+  std::cout << " - Number of switches: " << switches << "\n";
   std::cout << " - Check if array was sorted: " << std::boolalpha << isSorted(arr, size) << "\n";
 
+  switches = 0;
   std::cout << "Running tests for medium situation:\n";
   for (int i = 0; i < size; i++)
   {
     arr[i] = std::rand();
   }
-  heapSort(arr, size);
+  heapSort(arr, size, switches);
+  std::cout << " - Number of switches: " << switches << "\n";
   std::cout << " - Check if array was sorted: " << std::boolalpha << isSorted(arr, size) << "\n";
 
+  switches = 0;
   std::cout << "Running tests for the worst situation:\n";
   for (int i = size - 1; i >= 0; i--)
   {
     arr[i] = i;
   }
-  heapSort(arr, size);
+  heapSort(arr, size, switches);
+  std::cout << " - Number of switches: " << switches << "\n";
   std::cout << " - Check if array was sorted: " << std::boolalpha << isSorted(arr, size) << "\n\n";
 }
