@@ -11,8 +11,8 @@ int main()
 {
   testSort(1000);
   testSort(10000);
-  testSort(10000);
-  testSort(50000);
+  testSort(100000);
+  testSort(500000);
 }
 
 void makeHeap(int *arr, int i, int n)
