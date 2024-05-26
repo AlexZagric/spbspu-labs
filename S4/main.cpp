@@ -30,10 +30,15 @@ void makeHeap(int *arr, int i, int n)
   int min = i;
   while (1)
   {
-    int child = 2 * i + 1;
-    if (child < n && arr[child] < arr[min])
+    int left_childs = 2 * i + 1;
+    int right_childs = 2 * i + 2;
+    if (left_childs < n && arr[left_childs] < arr[min])
     {
-      min = child;
+      min = left_childs;
+    }
+    if (right_childs < n && arr[right_childs] < arr[min])
+    {
+      min = right_childs;
     }
 
     if (min == i)
