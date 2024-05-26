@@ -1,22 +1,18 @@
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 
 void makeHeap(int *arr, int i, int n);
 void heapSort(int *arr, int n);
 bool isSorted(int *arr, int size);
+void testSort(int size);
 
 int main()
 {
-  int arr[10];
-
-  for (int i = 0; i < 10; i++)
-  {
-    // arr[i] = std::rand();
-    arr[i] = i * 10;
-  }
-  std::cout << isSorted(arr, 10) << '\n';
-  heapSort(arr, 10);
-  std::cout << isSorted(arr, 10) << '\n';
+  testSort(1000);
+  testSort(10000);
+  testSort(10000);
+  testSort(50000);
 }
 
 void makeHeap(int *arr, int i, int n)
@@ -72,4 +68,33 @@ bool isSorted(int *arr, int size)
     }
   }
   return true;
+}
+
+void testSort(int size)
+{
+  std::cout << "== Starting test for " << size << " elements ==\n";
+  int *arr = new int[size];
+  std::cout << "Running tests for the best situation:\n";
+  for (int i = 0; i < size; i++)
+  {
+    arr[i] = i;
+  }
+  heapSort(arr, size);
+  std::cout << " - Check if array was sorted: " << std::boolalpha << isSorted(arr, size) << "\n";
+
+  std::cout << "Running tests for medium situation:\n";
+  for (int i = 0; i < size; i++)
+  {
+    arr[i] = std::rand();
+  }
+  heapSort(arr, size);
+  std::cout << " - Check if array was sorted: " << std::boolalpha << isSorted(arr, size) << "\n";
+
+  std::cout << "Running tests for the worst situation:\n";
+  for (int i = size - 1; i >= 0; i--)
+  {
+    arr[i] = i;
+  }
+  heapSort(arr, size);
+  std::cout << " - Check if array was sorted: " << std::boolalpha << isSorted(arr, size) << "\n\n";
 }
