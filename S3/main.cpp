@@ -13,6 +13,9 @@ int main()
     tree->insertKey(val);
   }
 
+  std::cout << "inorderWalkIterative: ";
+  tree->inorderWalkIterative();
+
   val = 0;
 
   while (val != -1)
@@ -32,5 +35,5 @@ int main()
   tree2->insertKey('g');
   tree2->insertKey('b');
   tree2->output(std::cout);
-  std::cout << tree2->size() << " " << tree2->height() << "\n\n";
+  std::cout << "size: " << tree2->size() << " height: " << tree2->height() << "\n\n";
 }

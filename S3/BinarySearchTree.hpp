@@ -1,6 +1,7 @@
 #ifndef BINARYSEARCHTREE_HPP
 #define BINARYSEARCHTREE_HPP
 #include <iostream>
+#include <stack>
 #include <string>
 
 namespace zagrivnyy
@@ -232,6 +233,36 @@ namespace zagrivnyy
   inline int BinarySearchTree< T >::height() const
   {
     return getHeight(this->root_);
+  }
+
+  template< class T >
+  inline void BinarySearchTree< T >::inorderWalkIterative() const
+  {
+    if (this->root_)
+    {
+      std::stack< node_t * > s;
+      node_t *current = this->root_;
+
+      while (!s.empty() || current != nullptr)
+      {
+        if (current != nullptr)
+        {
+          s.push(current);
+          current = current->left_;
+        }
+        else
+        {
+          current = s.top();
+          s.pop();
+          std::cout << current->key_ << " ";
+          current = current->right_;
+        }
+      }
+    }
+    else
+    {
+      std::cout << "tree is empty\n";
+    }
   }
 
   template< class T >
