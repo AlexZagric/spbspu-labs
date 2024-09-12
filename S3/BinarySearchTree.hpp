@@ -305,6 +305,59 @@ namespace zagrivnyy
   }
 
   template< class T >
+  inline bool BinarySearchTree< T >::isSimilar(const BinarySearchTree &other) const
+  {
+    if (root_ && other.root_)
+    {
+      std::queue< node_t * > qOther, q;
+      node_t *tempOther = nullptr;
+      node_t *temp = nullptr;
+
+      q.push(root_);
+      qOther.push(other.root_);
+
+      while (!q.empty() && !qOther.empty())
+      {
+        temp = q.front();
+        tempOther = qOther.front();
+        if (temp->key_ != tempOther->key_)
+        {
+          return 0;
+        }
+        q.pop();
+        qOther.pop();
+
+        if (temp->left_)
+        {
+          q.push(temp->left_);
+        }
+        if (tempOther->left_)
+        {
+          qOther.push(tempOther->left_);
+        }
+
+        if (temp->right_)
+        {
+          q.push(temp->right_);
+        }
+        if (tempOther->right_)
+        {
+          qOther.push(tempOther->right_);
+        }
+      }
+      if (q.empty() ^ qOther.empty())
+      {
+        return 0;
+      }
+      return 1;
+    }
+    else
+    {
+      return 0;
+    }
+  }
+
+  template< class T >
   void BinarySearchTree< T >::output(std::ostream &out, node_t *node, const std::string &prefix_r,
     const std::string &prefix_c, const std::string &prefix_l) const
   {

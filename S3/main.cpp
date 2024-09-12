@@ -43,4 +43,15 @@ int main()
   tree2->insertKey('b');
   tree2->output(std::cout);
   std::cout << "size: " << tree2->size() << " height: " << tree2->height() << "\n\n";
+  zagrivnyy::BinarySearchTree< char > *tree3 = new zagrivnyy::BinarySearchTree< char >();
+  tree3->insertKey('f');
+  tree3->insertKey('e');
+  tree3->insertKey('a');
+  tree3->insertKey('c');
+  tree3->insertKey('d');
+  tree3->insertKey('g');
+  tree3->insertKey('b');
+  std::cout << std::boolalpha << tree2->isSimilar(*tree3) << "\n";
+  tree3->deleteKey('c');
+  std::cout << std::boolalpha << tree2->isSimilar(*tree3) << "\n";
 }
