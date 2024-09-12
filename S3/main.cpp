@@ -51,7 +51,9 @@ int main()
   tree3->insertKey('d');
   tree3->insertKey('g');
   tree3->insertKey('b');
-  std::cout << std::boolalpha << tree2->isSimilar(*tree3) << "\n";
+  std::cout << std::boolalpha << "isSimilar: " << tree2->isSimilar(*tree3)
+            << " isIdentical: " << tree2->isIdentical(*tree3) << "\n";
   tree3->deleteKey('c');
-  std::cout << std::boolalpha << tree2->isSimilar(*tree3) << "\n";
+  std::cout << std::boolalpha << "isSimilar: " << tree2->isSimilar(*tree3)
+            << " isIdentical: " << tree2->isIdentical(*tree3) << "\n";
 }
