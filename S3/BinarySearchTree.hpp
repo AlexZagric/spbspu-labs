@@ -1,6 +1,7 @@
 #ifndef BINARYSEARCHTREE_HPP
 #define BINARYSEARCHTREE_HPP
 #include <iostream>
+#include <queue>
 #include <stack>
 #include <string>
 
@@ -269,6 +270,38 @@ namespace zagrivnyy
   inline void BinarySearchTree< T >::inorderWalk() const
   {
     inorderWalk(this->root_);
+  }
+
+  template< class T >
+  inline void BinarySearchTree< T >::walkByLevels() const
+  {
+    if (this->root_)
+    {
+      std::queue< node_t * > q;
+      node_t *temp = nullptr;
+
+      q.push(this->root_);
+
+      while (!q.empty())
+      {
+        temp = q.front();
+        q.pop();
+        std::cout << temp->key_ << " ";
+
+        if (temp->left_)
+        {
+          q.push(temp->left_);
+        }
+        if (temp->right_)
+        {
+          q.push(temp->right_);
+        }
+      }
+    }
+    else
+    {
+      std::cout << "tree is empty\n";
+    }
   }
 
   template< class T >

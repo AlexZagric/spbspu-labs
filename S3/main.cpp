@@ -19,6 +19,9 @@ int main()
   std::cout << "inorderWalk: ";
   tree->inorderWalk();
   std::cout << '\n';
+  std::cout << "walkByLevels: ";
+  tree->walkByLevels();
+  std::cout << '\n';
 
   val = 0;
 
