@@ -266,6 +266,12 @@ namespace zagrivnyy
   }
 
   template< class T >
+  inline void BinarySearchTree< T >::inorderWalk() const
+  {
+    inorderWalk(this->root_);
+  }
+
+  template< class T >
   void BinarySearchTree< T >::output(std::ostream &out, node_t *node, const std::string &prefix_r,
     const std::string &prefix_c, const std::string &prefix_l) const
   {
@@ -307,6 +313,17 @@ namespace zagrivnyy
     }
 
     return (1 + std::max(getHeight(node->left_), getHeight(node->right_)));
+  }
+
+  template< class T >
+  inline void BinarySearchTree< T >::inorderWalk(node_t *node) const
+  {
+    if (node)
+    {
+      inorderWalk(node->left_);
+      std::cout << node->key_ << " ";
+      inorderWalk(node->right_);
+    }
   }
 }
 #endif

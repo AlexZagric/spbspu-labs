@@ -15,6 +15,10 @@ int main()
 
   std::cout << "inorderWalkIterative: ";
   tree->inorderWalkIterative();
+  std::cout << '\n';
+  std::cout << "inorderWalk: ";
+  tree->inorderWalk();
+  std::cout << '\n';
 
   val = 0;
 
