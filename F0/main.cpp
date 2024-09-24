@@ -4,10 +4,7 @@
 #include <limits>
 #include <map>
 #include <string>
-#include <unordered_map>
 #include <vector>
-
-#include <streamGuard.hpp>
 
 #include "commands.hpp"
 #include "dictionary.hpp"
@@ -52,7 +49,6 @@ int main(int argc, char *argv[])
   }
 
   std::string cmd;
-  zagrivnyy::StreamGuard streamGuard(std::cout);
   while (std::cin >> cmd)
   {
     try

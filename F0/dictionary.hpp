@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <string>
-#include <unordered_map>
 #include <vector>
+
+#include "hashtable.hpp"
 
 namespace zagrivnyy
 {
@@ -27,13 +28,13 @@ namespace zagrivnyy
     std::vector< std::vector< std::string > > generate_table() const;
     std::vector< Position > get(std::string word) const;
 
-    std::unordered_map< std::string, std::vector< Position > > get_dict()
+    zagrivnyy::hash_table< std::vector< Position > > get_dict()
     {
       return dict_;
     }
 
   private:
-    std::unordered_map< std::string, std::vector< Position > > dict_;
+    zagrivnyy::hash_table< std::vector< Position > > dict_;
   };
 }
 #endif
